@@ -2,8 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -25,8 +24,4 @@ jobs:
         run: npm test
 
       - name: Build project
-<<<<<<< HEAD
         run: npm run build
-=======
-        run: npm run build
->>>>>>> 42d91872fb677982ef4cb50554860a44adf916ca
