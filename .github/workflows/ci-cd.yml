@@ -1,21 +1,28 @@
-name: CI/CD Pipelineon:
+name: CI/CD Pipeline
+
+on:
   push:
-    branches: [ "main" ]jobs:
+    branches:
+      - main
+
+jobs:
   build:
-    runs-on: ubuntu-latestjavascriptsteps:
-- name: Checkout code
-  uses: actions/checkout@v3
+    runs-on: ubuntu-latest
 
-- name: Install {{IE_0}}http://Node.js{{/IE_0}}
-  uses: actions/setup-node@v3
-  with:
-    node-version: '18'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-- name: Install dependencies
-  run: npm install
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-- name: Run tests
-  run: npm test
+      - name: Install dependencies
+        run: npm install
 
-- name: Build project
-  run: npm run build
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
